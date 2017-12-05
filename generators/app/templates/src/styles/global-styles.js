@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components'
+import { injectGlobal } from 'styled-components';
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
@@ -13,4 +13,4 @@ injectGlobal`
     padding: 0;
     font-family: sans-serif;
   }
-`
+`;
