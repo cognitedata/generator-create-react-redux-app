@@ -17,9 +17,9 @@ export default (state = initialState, action) => {
 };
 
 // Action creators
-export const increment = { type: INCREMENT_COUNTER };
+export const increment = () => ({ type: INCREMENT_COUNTER });
 
-export const decrement = { type: DECREMENT_COUNTER };
+export const decrement = () => ({ type: DECREMENT_COUNTER });
 
 export function incrementIfOdd() {
   return (dispatch, getState) => {
@@ -32,5 +32,11 @@ export function incrementIfOdd() {
     dispatch(increment());
   };
 }
+
+export const actions = {
+  increment,
+  decrement,
+  incrementIfOdd,
+};
 
 // Selectors

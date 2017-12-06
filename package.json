@@ -1,15 +1,13 @@
 {
-  "name": "generator-create-redux-app",
+  "name": "generator-cognite-react",
   "version": "0.2.21",
-  "description": "Add Redux, styled-components and other useful libraries like Generators in top of create-react-app",
-  "homepage": "https://github.com/jonidelv/generator-create-redux-app",
+  "description": "Cognite fork of generator-create-redux-app",
+  "homepage": "https://github.com/cognitedata/generator-create-redux-app",
   "author": {
-    "name": "jonidelv",
-    "email": "hi@jonidelv.me"
+    "name": "halvard",
+    "email": "halvard.eggen@cognite.com"
   },
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/app/index.js",
   "keywords": [
     "redux",
@@ -49,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jonidelv/generator-create-redux-app.git"
+    "url": "git+https://cognitedata/generator-create-redux-app.git"
   },
   "license": "MIT"
 }
