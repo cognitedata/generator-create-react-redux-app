@@ -1,6 +1,6 @@
 import React from 'react';
 import { CounterContainer } from 'containers';
-import { Header } from 'components';
+import { Header } from 'components/Header';
 import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import styled from 'styled-components';

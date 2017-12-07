@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Counter } from 'components';
 import { createStructuredSelector, createSelector } from 'reselect';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as CounterActions from 'modules/counter';
+import { Counter } from '../components/Counter';
 
 class CounterContainer extends React.Component {
   static propTypes = {

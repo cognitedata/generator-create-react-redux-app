@@ -18,16 +18,15 @@ export default (state = initialState, action) => {
 // Action creators
 export const verb{{constantCase name}} = createAction({{constantCase name}}_VERB);
 
-export const someSideeffectThenVerb = () => (dispatch, getState) => {
+export const someSideeffectThenVerb = () => async (dispatch, getState) => {
   const value = await sideEffect();
 
   dispatch(verb{{constantCase name}}(value));
 };
 
 export const actions = {
-  increment,
-  decrement,
-  incrementIfOdd,
+  verb{{constantCase name}},
+  someSideeffectThenVerb,
 };
 
 // Selectors
