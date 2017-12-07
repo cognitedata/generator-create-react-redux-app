@@ -1,4 +1,4 @@
-const componentExists = require('../utils/componentExists')
+const componentExists = require('../utils/componentExists');
 
 module.exports = {
   description: 'Add an unconnected component',
@@ -17,21 +17,6 @@ module.exports = {
     },
     {
       type: 'input',
-      name: 'fileDir',
-      message: 'What is the file directory, finished with /',
-      default: 'components/',
-      validate: value => {
-        if (/.+/.test(value)) {
-          return componentExists(value)
-            ? 'A component with this name already exists'
-            : true
-        }
-
-        return 'The file directory is required'
-      },
-    },
-    {
-      type: 'input',
       name: 'name',
       message: 'What should it be called?',
       default: 'Button',
@@ -39,47 +24,56 @@ module.exports = {
         if (/.+/.test(value)) {
           return componentExists(value)
             ? 'A component with this name already exists'
-            : true
+            : true;
         }
 
-        return 'The name is required'
+        return 'The name is required';
       },
     },
   ],
   actions: data => {
-    let componentTemplate
+    let componentTemplate;
 
     switch (data.type) {
       case 'ES6 Class': {
-        componentTemplate = './component/es6.js.hbs'
-        break
+        componentTemplate = './component/es6.js.hbs';
+        break;
       }
       case 'ES6 Class (Pure)': {
-        componentTemplate = './component/es6.pure.js.hbs'
-        break
+        componentTemplate = './component/es6.pure.js.hbs';
+        break;
       }
       case 'Stateless Function': {
-        componentTemplate = './component/stateless.js.hbs'
-        break
+        componentTemplate = './component/stateless.js.hbs';
+        break;
       }
       case 'Stateless Function (Pure)': {
-        componentTemplate = './component/stateless.pure.js.hbs'
-        break
+        componentTemplate = './component/stateless.pure.js.hbs';
+        break;
       }
       default: {
-        componentTemplate = './component/es6.js.hbs'
+        componentTemplate = './component/es6.js.hbs';
       }
     }
+
+    const testTemplate = './component/spec.js.hbs';
 
     const actions = [
       {
         type: 'add',
-        path: '../src/{{fileDir}}/{{properCase name}}.js',
+        path: '../src/components/{{properCase name}}/{{properCase name}}.js',
         templateFile: componentTemplate,
         abortOnFail: true,
       },
-    ]
+      {
+        type: 'add',
+        path:
+          '../src/components/{{properCase name}}/{{properCase name}}.spec.js',
+        templateFile: testTemplate,
+        abortOnFail: true,
+      },
+    ];
 
-    return actions
+    return actions;
   },
-}
+};
