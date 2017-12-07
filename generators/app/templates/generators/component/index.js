@@ -57,6 +57,7 @@ module.exports = {
     }
 
     const testTemplate = './component/spec.js.hbs';
+    const indexTemplate = './component/index.js.hbs';
 
     const actions = [
       {
@@ -70,6 +71,12 @@ module.exports = {
         path:
           '../src/components/{{properCase name}}/{{properCase name}}.spec.js',
         templateFile: testTemplate,
+        abortOnFail: true,
+      },
+      {
+        type: 'add',
+        path: '../src/components/{{properCase name}}/index.js',
+        templateFile: indexTemplate,
         abortOnFail: true,
       },
     ];
