@@ -23,13 +23,13 @@ const TopBar = styled.div`
   }
 `;
 
-function Header() {
+const Header = () => {
   return (
     <TopBar>
       <img src={logo} className="redux-logo" alt="logo" />
       <h2>Welcome to Create Redux App</h2>
     </TopBar>
   );
-}
+};
 
 export default Header;

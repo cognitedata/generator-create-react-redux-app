@@ -7,7 +7,7 @@ const Intro = styled.p`
   font-size: large;
 `;
 
-function Counter({ increment, incrementIfOdd, decrement, counter }) {
+const Counter = ({ increment, incrementIfOdd, decrement, counter }) => {
   return (
     <section>
       <Intro>
@@ -21,7 +21,7 @@ function Counter({ increment, incrementIfOdd, decrement, counter }) {
       </p>
     </section>
   );
-}
+};
 
 Counter.propTypes = {
   increment: PropTypes.func.isRequired,
