@@ -1,30 +1,26 @@
 {{#if addRedux}}
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as {{ actionsFile }} from '../actions/{{ actionsFile }}'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as {{ actionsFile }} from 'modules/{{ actionsFile }}';
 {{/if}}
 
 {{#if addSelectors}}
-import { createStructuredSelector, createSelector } from 'reselect'
+import { createStructuredSelector, createSelector } from 'reselect';
 {{/if}}
 {{#unless addRedux}}
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 {{/unless}}
 
 class {{ properCase name }} extends React.{{{ component }}} {
-
-  static propTypes = {
-
-  }
+  static propTypes = {};
 
   render() {
     return (
-      <div>
-      </div>
+      <div />;
     )
   }
 }
@@ -33,11 +29,8 @@ class {{ properCase name }} extends React.{{{ component }}} {
 {{#if addSelectors}}
 // Change prop to the state part you need as a prop
 const mapStateToProps = createStructuredSelector({
-  prop: createSelector(
-    (state) => state.prop,
-    (propState) => propState
-  ),
-})
+  prop: createSelector(state => state.prop, propState => propState),
+});
 {{/if}}
 {{#unless addSelectors}}
 function mapStateToProps (state) {
@@ -48,7 +41,7 @@ function mapStateToProps (state) {
 {{/unless}}
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({{ actionsFile }}, dispatch)
+  return bindActionCreators({{ actionsFile }}, dispatch);
 }
 
 export default connect(
@@ -57,5 +50,5 @@ export default connect(
 )({{ properCase name }})
 {{/if}}
 {{#unless addRedux}}
-export default {{ properCase name }}
+export default {{ properCase name }};
 {{/unless}}

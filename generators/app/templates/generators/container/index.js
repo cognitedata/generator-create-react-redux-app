@@ -1,21 +1,8 @@
-const containerExists = require('../utils/containerExists')
+const containerExists = require('../utils/containerExists');
 
 module.exports = {
   description: 'Add a container component',
   prompts: [
-    {
-      type: 'input',
-      name: 'fileDir',
-      message: 'What is the file directory, finished with /',
-      default: 'containers/',
-      validate: value => {
-        if (/.+/.test(value)) {
-          return containerExists(value) ? 'A container with this name already exists' : true
-        }
-
-        return 'The file directory is required'
-      },
-    },
     {
       type: 'input',
       name: 'name',
@@ -23,10 +10,12 @@ module.exports = {
       default: 'FormContainer',
       validate: value => {
         if (/.+/.test(value)) {
-          return containerExists(value) ? 'A container with this name already exists' : true
+          return containerExists(value)
+            ? 'A container with this name already exists'
+            : true;
         }
 
-        return 'The name is required'
+        return 'The name is required';
       },
     },
     {
@@ -47,30 +36,32 @@ module.exports = {
       name: 'actionsFile',
       message: 'What is the name of its actions file ?',
       default: 'FormActions',
-      when: value => {
-        return value.addRedux ? true : false
-      },
+      when: value => value.addRedux,
     },
     {
       type: 'confirm',
       name: 'addSelectors',
       message: 'Do you want to include Reselect library to add Selectors ?',
       default: false,
-      when: value => {
-        return value.addRedux ? true : false
-      },
+      when: value => value.addRedux,
     },
   ],
   actions: () => {
     const actions = [
       {
         type: 'add',
-        path: '../src/{{fileDir}}{{properCase name}}.js',
-        templateFile: './container/index.js.hbs',
+        path: '../src/containers/{{properCase name}}.js',
+        templateFile: './container/container.js.hbs',
         abortOnFail: true,
       },
-    ]
+      {
+        type: 'add',
+        path: '../src/containers/{{properCase name}}.js',
+        templateFile: './container/spec.js.hbs',
+        abortOnFail: true,
+      },
+    ];
 
-    return actions
+    return actions;
   },
-}
+};
