@@ -1,15 +1,17 @@
+import { createAction } from 'redux-actions';
+
 // Constants
-export const INCREMENT_COUNTER = 'counter/INCREMENT_COUNTER';
-export const DECREMENT_COUNTER = 'counter/DECREMENT_COUNTER';
+export const COUNTER_INCREMENT = 'counter/COUNTER_INCREMENT';
+export const COUNTER_DECREMENT = 'counter/COUNTER_DECREMENT';
 
 // Reducer
 const initialState = 0;
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case INCREMENT_COUNTER:
+    case COUNTER_INCREMENT:
       return state + 1;
-    case DECREMENT_COUNTER:
+    case COUNTER_DECREMENT:
       return state - 1;
     default:
       return state;
@@ -17,26 +19,26 @@ export default (state = initialState, action) => {
 };
 
 // Action creators
-export const increment = () => ({ type: INCREMENT_COUNTER });
+export const incrementCounter = createAction(COUNTER_INCREMENT);
 
-export const decrement = () => ({ type: DECREMENT_COUNTER });
+export const decrementCounter = createAction(COUNTER_DECREMENT);
 
-export function incrementIfOdd() {
-  return (dispatch, getState) => {
-    const { counter } = getState();
+export const incrementCounterIfOdd = () => (dispatch, getState) => {
+  const { counter } = getState();
 
-    if (counter % 2 === 0) {
-      return;
-    }
+  if (counter % 2 === 0) {
+    return;
+  }
 
-    dispatch(increment());
-  };
-}
+  dispatch(incrementCounter());
+};
 
 export const actions = {
-  increment,
-  decrement,
-  incrementIfOdd,
+  incrementCounter,
+  decrementCounter,
+  incrementCounterIfOdd,
 };
 
 // Selectors
+export const getCount = state => state;
+export const getDoubleCount = state => state * 2;

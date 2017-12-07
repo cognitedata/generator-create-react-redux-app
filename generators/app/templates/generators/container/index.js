@@ -34,7 +34,7 @@ module.exports = {
     {
       type: 'input',
       name: 'actionsFile',
-      message: 'What is the name of its actions file ?',
+      message: 'What is the name of the module where actions are located?',
       default: 'FormActions',
       when: value => value.addRedux,
     },
@@ -56,7 +56,7 @@ module.exports = {
       },
       {
         type: 'add',
-        path: '../src/containers/{{properCase name}}.js',
+        path: '../src/containers/{{properCase name}}.spec.js',
         templateFile: './container/spec.js.hbs',
         abortOnFail: true,
       },

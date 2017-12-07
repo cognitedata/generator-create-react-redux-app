@@ -2,10 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const componentGenerator = require('./component/index.js');
 const containerGenerator = require('./container/index.js');
+const moduleGenerator = require('./module/index.js');
 
 module.exports = plop => {
   plop.setGenerator('Component', componentGenerator);
   plop.setGenerator('Container', containerGenerator);
+  plop.setGenerator('Module (DUCK)', moduleGenerator);
   plop.addHelper('directory', comp => {
     try {
       fs.accessSync(path.join(__dirname, `../src/containers/${comp}`), fs.F_OK);
