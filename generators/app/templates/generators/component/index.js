@@ -62,20 +62,20 @@ module.exports = {
     const actions = [
       {
         type: 'add',
-        path: '../src/components/{{properCase name}}/{{properCase name}}.js',
+        path: '../src/components/{{camelCase name}}/{{properCase name}}.js',
         templateFile: componentTemplate,
         abortOnFail: true,
       },
       {
         type: 'add',
         path:
-          '../src/components/{{properCase name}}/{{properCase name}}.spec.js',
+          '../src/components/{{camelCase name}}/{{properCase name}}.spec.js',
         templateFile: testTemplate,
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: '../src/components/{{properCase name}}/index.js',
+        path: '../src/components/{{camelCase name}}/index.js',
         templateFile: indexTemplate,
         abortOnFail: true,
       },
