@@ -4,7 +4,7 @@ import { createStructuredSelector, createSelector } from 'reselect';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as CounterActions from 'modules/counter';
+import * as CounterActions from 'modules/Counter';
 import { Counter } from '../components/Counter';
 
 class CounterContainer extends React.Component {
