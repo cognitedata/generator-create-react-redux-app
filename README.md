@@ -1,4 +1,4 @@
-# Generator cognite-react
+# Generator create-react-redux-app
 
 This generator was orginally forked from
 [generator-create-redux-app](https://github.com/jonidelv/generator-create-redux-app)
@@ -15,13 +15,13 @@ and has been adapted to the Cognite Way&trade;
 
 **Note: this is not actually published on npm yet. you have to use npm link.**
 
-First, install [Yeoman](http://yeoman.io) and generator-cognite-react using
-[npm](https://www.npmjs.com/)( **You’ll need to have Node >= 6.10.3 on your
+First, install [Yeoman](http://yeoman.io) and generator-create-react-redux-app
+using [yarn](https://yarnpkg.com/)( **You’ll need to have Node >= 6.10.3 on your
 machine** [node.js](https://nodejs.org/)).
 
 ```bash
 yarn global add yo
-yarn global add generator-cognite-react
+yarn global add @cognite/generator-create-react-redux-app
 ```
 
 Then generate your new project:
@@ -29,7 +29,7 @@ Then generate your new project:
 ```bash
 mkdir project-name
 cd project-name
-yo cognite-react
+yo create-react-redux-app
 ```
 
 Once the installation is done, these commands are available to you
