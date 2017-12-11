@@ -1,6 +1,6 @@
 {
   "name": "@cognite/generator-create-react-redux-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cognite fork of generator-create-redux-app",
   "homepage": "https://github.com/cognitedata/generator-create-redux-app",
   "author": {
