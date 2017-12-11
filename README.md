@@ -29,7 +29,7 @@ Then generate your new project:
 ```bash
 mkdir project-name
 cd project-name
-yo create-react-redux-app
+yo @cognite/create-react-redux-app
 ```
 
 Once the installation is done, these commands are available to you
