@@ -9,25 +9,26 @@ import { Counter } from '../components/Counter';
 
 class CounterContainer extends React.Component {
   static propTypes = {
-    increment: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
-    incrementIfOdd: PropTypes.func.isRequired,
+    incrementCounter: PropTypes.func.isRequired,
+    decrementCounter: PropTypes.func.isRequired,
+    incrementCounterIfOdd: PropTypes.func.isRequired,
     counter: PropTypes.number.isRequired,
   };
 
   increment = () => {
-    this.props.increment();
+    this.props.incrementCounter();
   };
 
   decrement = () => {
-    this.props.decrement();
+    this.props.decrementCounter();
   };
 
   incrementIfOdd = () => {
-    this.props.incrementIfOdd();
+    this.props.incrementCounterIfOdd();
   };
 
   render() {
+    console.log(this.props);
     return (
       <Counter
         counter={this.props.counter}
