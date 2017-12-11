@@ -28,7 +28,6 @@ class CounterContainer extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <Counter
         counter={this.props.counter}
