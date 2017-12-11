@@ -9,8 +9,7 @@ const projectGenerator = Generator.extend({
       this.log(
         yosay(
           "'Allo 'allo! This generator add Redux, " +
-            'styled-components and some useful tools and libraries like ' +
-            'auto-generate boilerplate code to the most common ' +
+            'styled-components and some other useful tools and libraries to ' +
             'React starter Create React App'
         )
       );
@@ -158,7 +157,7 @@ const projectGenerator = Generator.extend({
 
   install() {
     this.installDependencies({
-      npm: true,
+      npm: false,
       bower: false,
       yarn: true,
     });
