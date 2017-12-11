@@ -1,21 +1,27 @@
-# Generator create-redux-app
+# Generator cognite-react
 
-[![Build Status](https://travis-ci.org/jonidelv/generator-create-redux-app.svg?branch=master)](https://travis-ci.org/jonidelv/generator-create-redux-app)
-[![bitHound Code](https://www.bithound.io/github/jonidelv/generator-create-redux-app/badges/code.svg)](https://www.bithound.io/github/jonidelv/generator-create-redux-app) [![npm](https://img.shields.io/npm/v/generator-create-redux-app.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/generator-create-redux-app)
+This generator was orginally forked from
+[generator-create-redux-app](https://github.com/jonidelv/generator-create-redux-app)
+and has been adapted to the Cognite Way&trade;
 
-[![NPM](https://nodei.co/npm/generator-create-redux-app.png?downloads=true)](https://nodei.co/npm/generator-create-redux-app/)
-
-> This generator add **Redux**, **styled-components** and other useful libraries and tools like **auto-generate boilerplate code**, in top of the most common React starter [Create React App](https://github.com/facebookincubator/create-react-app).
-Below you will find some information on how to perform common tasks.
-
+> This generator adds **Redux**, **styled-components** and other useful
+> libraries and tools on top of the most common React starter
+> [Create React App](https://github.com/facebookincubator/create-react-app). It
+> also provides a folder structure and code style based on what is considered
+> best practices. Below you will find some information on how to perform common
+> tasks.
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-create-redux-app using [npm](https://www.npmjs.com/) ( **You’ll need to have Node >= 6.10.3 on your machine**  [node.js](https://nodejs.org/)).
+**Note: this is not actually published on npm yet. you have to use npm link.**
+
+First, install [Yeoman](http://yeoman.io) and generator-cognite-react using
+[npm](https://www.npmjs.com/)( **You’ll need to have Node >= 6.10.3 on your
+machine** [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g yo
-npm install -g generator-create-redux-app
+yarn global add yo
+yarn global add generator-cognite-react
 ```
 
 Then generate your new project:
@@ -23,84 +29,76 @@ Then generate your new project:
 ```bash
 mkdir project-name
 cd project-name
-yo create-redux-app
+yo cognite-react
 ```
 
-Once the installation is done, you can run some commands inside the project folder:
+Once the installation is done, these commands are available to you
 
-### `npm start` or `yarn start`
+### Basic commands:
 
-Runs the app in development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```js
+yarn start // start dev server
+yarn test // run tests in watch mode
+yarn build // build for production
+```
 
-The page will reload if you make edits.<br>
-You will see the build errors and lint warnings in the console.
+### `yarn generate`
 
-### `npm test` or `yarn test`
-
-Runs the test watcher in an interactive mode.<br>
-By default, runs tests related to files changes since the last commit.
-
-[Read more about testing.](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
-
-### `npm run build` or `yarn build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-### `npm run generate`
-
-Allows you to auto-generate boilerplate code for common parts of your
-application, specifically `component`s and `container`s.
-
+Generates components, containers or
+[ducks](https://github.com/erikras/ducks-modular-redux)
 
 ## User Guide
 
-- [Folder Structure](#folder-structure)
-- [Redux Dev Tools](#redux-dev-tools)
-- [Absolute Paths](#absolute-paths)
-- [Import Export Containers and Components](#import-export-containers-and-components)
-- [Git Hooks](#git-hooks)
-- [Prettier](#prettier)
-- [ESLint](#eslint)
-- [Routing](#routing)
-- [Styled Components](#styled-components)
-- [Adding Sass Preprocessor](#adding-sass-preprocessor)
-- [Generators](#generators)
-- [Reselect](#reselect)
-- [Recompose](#recompose)
-- [Redux Actions](#redux-actions)
-- [Create React App config](#create-react-app-config)
-
+* [Folder Structure](#folder-structure)
+* [Redux Dev Tools](#redux-dev-tools)
+* [Absolute Paths](#absolute-paths)
+* [Import Export Containers and Components](#import-export-containers-and-components)
+* [Git Hooks](#git-hooks)
+* [Prettier](#prettier)
+* [ESLint](#eslint)
+* [Routing](#routing)
+* [Styled Components](#styled-components)
+* [Adding Sass Preprocessor](#adding-sass-preprocessor)
+* [Generators](#generators)
+* [Reselect](#reselect)
+* [Recompose](#recompose)
+* [Redux Actions](#redux-actions)
+* [Create React App config](#create-react-app-config)
 
 ## Folder Structure
 
-create-redux-app override create-redux-app folder structure.
-Once the generator runs your project folders should look like this:
+create-redux-app override create-redux-app folder structure. Once the generator
+runs your project folders should look like this:
 
 ```
-my-app/
-  docs/
-  generators/
-  public/
-    index.html
-    favicon.ico
-  src/
-    actions/
-    assets/
-    components/
-    constants/
-    containers/
-    reducers/
-    routes/
-    store/
-    tests/
-    styles/
-    utils/
-    index.js
+├── README.md
+├── docs
+│   └── create-redux-app
+├── generators
+│   ├── component
+│   ├── container
+│   ├── index.js
+│   ├── module
+│   └── utils
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── src
+│   ├── assets
+│   ├── components
+│   ├── containers
+│   ├── index.js
+│   ├── modules
+│   ├── reducer
+│   ├── routes
+│   ├── setupTests.js
+│   ├── store
+│   ├── styles
+│   └── utils
+│
 ```
 
 For the project to build, **these files must exist with exact filenames**:
@@ -110,81 +108,110 @@ For the project to build, **these files must exist with exact filenames**:
 
 You can delete or rename the other files.
 
-You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack.<br>
-You need to **put any JS and CSS files inside `src`**, or Webpack won’t see them.
+You may create subdirectories inside `src`. For faster rebuilds, only files
+inside `src` are processed by Webpack.<br> You need to **put any JS and CSS
+files inside `src`**, or Webpack won’t see them.
 
-Only files inside `public` can be used from `public/index.html`.<br>
-Read instructions below for using assets from JavaScript and HTML.
+Only files inside `public` can be used from `public/index.html`.<br> Read
+instructions below for using assets from JavaScript and HTML.
 
-You can, however, create more top-level directories.<br>
-They will not be included in the production build so you can use them for things like documentation.
-
+You can, however, create more top-level directories.<br> They will not be
+included in the production build so you can use them for things like
+documentation.
 
 ## Redux Dev Tools
 
-Create Redux App use [Redux DevTools Extension](http://extension.remotedev.io/). It provides access to the most popular monitors, is easy to configure and to filter actions.
+Create Redux App use [Redux DevTools Extension](http://extension.remotedev.io/).
+It provides access to the most popular monitors, is easy to configure and to
+filter actions.
 
 ### Installation
 
 #### 1. For Chrome
- - from [Chrome Web Store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd);
- - or build it with `npm i && npm run build:extension` and [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked) `./build/extension`;
- - or run it in dev mode with `npm i && npm start` and [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked) `./dev`.
+
+* from
+  [Chrome Web Store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd);
+* or build it with `npm i && npm run build:extension` and
+  [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked)
+  `./build/extension`;
+* or run it in dev mode with `npm i && npm start` and
+  [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked)
+  `./dev`.
 
 #### 2. For Firefox
- - from [Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/remotedev/);
- - or build it with `npm i && npm run build:firefox` and [load the extension's folder](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Temporary_Installation_in_Firefox) `./build/firefox` (just select a file from inside the dir).
+
+* from
+  [Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/remotedev/);
+* or build it with `npm i && npm run build:firefox` and
+  [load the extension's folder](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Temporary_Installation_in_Firefox)
+  `./build/firefox` (just select a file from inside the dir).
 
 #### 3. For Electron
-  - just specify `REDUX_DEVTOOLS` in [`electron-devtools-installer`](https://github.com/GPMDP/electron-devtools-installer).
+
+* just specify `REDUX_DEVTOOLS` in
+  [`electron-devtools-installer`](https://github.com/GPMDP/electron-devtools-installer).
 
 #### 4. For other browsers and non-browser environment
-  - use [`remote-redux-devtools`](https://github.com/zalmoxisus/remote-redux-devtools).
 
+* use
+  [`remote-redux-devtools`](https://github.com/zalmoxisus/remote-redux-devtools).
 
 ## Absolute Paths
 
-  By default ES6 modules in create-react-app use relative paths, which is fine for cases where the files you’re importing are relatively close within the file tree
-  so if the file is in the same folder and next to the file you're importing from, just use relative paths like so:
+By default ES6 modules in create-react-app use relative paths, which is fine for
+cases where the files you’re importing are relatively close within the file tree
+so if the file is in the same folder and next to the file you're importing from,
+just use relative paths like so:
 
-  ```js
-  import { createGoal } from ‘./actions’
-  import { selectAuth } from ‘./selectors’
-  ```
-  But using relative paths is a real pain when you start dealing with deeply nested tree structures because you end up with dot-dot syndrome. Because of the `.env` file at the root level now we can now do absolute path like this:
+```js
+import { createGoal } from ‘./actions’
+import { selectAuth } from ‘./selectors’
+```
 
-  ```js
-  import { editUser } from ‘containers/AppContainer/actions’
-  import { selectAuth } from ‘containers/AppContainer/selectors
-  ```
+But using relative paths is a real pain when you start dealing with deeply
+nested tree structures because you end up with dot-dot syndrome. Because of the
+`.env` file at the root level now we can now do absolute path like this:
 
+```js
+import { editUser } from ‘containers/AppContainer/actions’
+import { selectAuth } from ‘containers/AppContainer/selectors
+```
 
 ## Import Export Containers and Components
 
 ### Export
-To Export Components or Containers there is an `index.js` file in each root folder so you have to export it there first in order to import outside the root folder.
-  ```js
-  index.js/
-    export { default as Comp1 } from './Comp1'
-    export { default as Comp2 } from './Comp2'
-  ```
+
+To Export Components or Containers there is an `index.js` file in each root
+folder so you have to export it there first in order to import outside the root
+folder.
+
+```js
+index.js/
+  export { default as Comp1 } from './Comp1'
+  export { default as Comp2 } from './Comp2'
+```
 
 ### Import
+
 To import Components or Containers doit like follow:
-  - Inside the same folder (Components/Containers) <br>
-    ```js
-    import Comp1 from './Comp1'
-    import Cont1 from './Cont1'
-    ```
-  - Outside the same folder (Components/Containers) <br>
-    ```js
-    import { Comp1 } from '../components'
-    import { Cont1 } from '../containers'
-    ```
+
+* Inside the same folder (Components/Containers) <br>
+  ```js
+  import Comp1 from './Comp1';
+  import Cont1 from './Cont1';
+  ```
+* Outside the same folder (Components/Containers) <br>
+  ```js
+  import Comp1 from 'components/Comp1';
+  import Cont1 from 'containers/Cont1';
+  ```
 
 ## Git Hooks
 
-We use [Husky](https://github.com/typicode/husky) to create Git Hooks. There is a pre commit hook than run prettier to ensure good code format. You can also create a prepush hook.<br>
+We use [Husky](https://github.com/typicode/husky) to create Git Hooks. There is
+a pre commit hook than run prettier to ensure good code format. You can also
+create a prepush hook.<br>
+
 ```
 // Edit package.json
 
@@ -206,39 +233,18 @@ We use [Husky](https://github.com/typicode/husky) to create Git Hooks. There is 
 ### Uninstall
 
 ```bash
-npm uninstall husky --save-dev
+yarn remove husky -D
 ```
-And delete the `pre` scripts in`package.json`
 
+And delete the `pre` scripts in`package.json`
 
 ## Prettier
 
-You can add/remove rules if you want `prettier [opts] [filename ...]`. Prettier runs in a precommit hooks to ensure good code formating.
-```
-// Edit package.json
+runs in a precommit hooks to ensure good code formating.
 
+```
+// package.json
 "scripts": {
-  "prettier": "prettier --single-quote --trailing-comma es5 --no-semi",
-  "format": "npm run prettier -- --write '{,!(build)/**/}*.js'",
-  "precommit": "lint-staged",
-  "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
-},
-"lint-staged": {
-  "{,!(build)/**/}*.js": [
-    "npm run prettier -- --write",
-    "git add"
-  ]
-}
-```
-### Uninstall
-
-```bash
-npm uninstall eslint-config-prettier lint-staged prettier --save-dev
-```
-Delete
-```
-"scripts": {
-  "prettier": "prettier --single-quote --trailing-comma es5 --no-semi",
   "format": "npm run prettier -- --write '{,!(build)/**/}*.js'",
   "precommit": "lint-staged",
   "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
@@ -253,48 +259,23 @@ Delete
 
 ## ESLint
 
-You can add/remove rules or even extend plugins if you want. We extend **airbnb** ESLint rules.
-```
-// Edit eslintrc.json
-
-{
-  "extends": ["airbnb", "prettier", "prettier/react"],
-  "plugins": ["prettier"],
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 2016,
-    "sourceType": "module"
-  },
-  "env": {
-    "es6": true,
-    "jest": true,
-    "browser": true,
-    "node": true
-  },
-  "globals": {
-    "DEBUG": false
-  },
-  "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "import/no-extraneous-dependencies": 0,
-    "import/no-unresolved": 0,
-    "import/extensions": 0,
-    "import/prefer-default-export": 0
-  }
-}
-```
-
+We extend **airbnb** ESLint rules.
 
 ## Routing
 
-The best option for routing is [React Router](https://reacttraining.com/react-router/) specifically its new version for the web [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start). <br>
-`src/routes/index.js` is the starter point of the app, where all the routes are specified and render the containers and components. Specify here all your routes, redirects, transitions, etc.
-
+The best option for routing is
+[React Router](https://reacttraining.com/react-router/) specifically its new
+version for the web
+[react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start).
+<br> `src/routes/index.js` is the starter point of the app, where all the routes
+are specified and render the containers and components. Specify here all your
+routes, redirects, transitions, etc.
 
 ## Styled Components
 
-[styled-components](https://styled-components.com/) allow you to write actual CSS code in your JavaScript to style your components,
-removing the mapping between components and styles.
+[styled-components](https://styled-components.com/) allow you to write actual
+CSS code in your JavaScript to style your components, removing the mapping
+between components and styles.
 
 See the
 [official documentation](https://github.com/styled-components/styled-components)
@@ -325,7 +306,8 @@ const Wrapper = styled.section`
 `
 ```
 
-*(The CSS rules are automatically vendor prefixed, so you don't have to think about it!)*
+_(The CSS rules are automatically vendor prefixed, so you don't have to think
+about it!)_
 
 You render them like so:
 
@@ -339,80 +321,80 @@ You render them like so:
 For further examples see the
 [official documentation](https://github.com/styled-components/styled-components).
 
-
-## Adding Sass Preprocessor
-
-Can I use Sass with this boilerplate? yes, although we advise against it and **do not support this**. We selected
-[`styled-components`](https://github.com/styled-components/styled-components)
-over Sass because its approach is more powerful: instead of trying to
-give a styling language programmatic abilities, it pulls logic and configuration
-out into JS where we believe those features belong.
-
-If you _really_ still want (or need) to use Sass [then...](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc)
-
-
 ## Generators
 
 ```Shell
-npm run generate
+yarn generate
 ```
 
 Allows you to auto-generate boilerplate code for common parts of your
-application, specifically `component`s and `container`s. You can
-also run `npm run generate <part>` to skip the first selection. (e.g. `npm run
-generate container`). This generators are outside yeoman so you can change them to fit your necessities, for this just go to `generators/index.js`, see [plop documentation](https://plopjs.com/documentation/) for more information.
-
+application, specifically `component`s, `container`s and `duck`s. You can also
+run `npm run generate <part>` to skip the first selection. (e.g.
+`npm run generate container`). This generators are outside yeoman so you can
+change them to fit your necessities, for this just go to `generators/index.js`,
+see [plop documentation](https://plopjs.com/documentation/) for more
+information.
 
 ## Reselect
 
-To prevent useless renders in (Redux) connected components, you must also make sure that the mapStateToProps function doesn’t return new objects each time it is called.
-The problem is that each time mapStateToProps runs, it returns a new object, even if the underlying objects didn’t change. As a consequence, the component re renders every time something in the state changes — while id should only render if the part of the state we are requiring change.<br>
+To prevent useless renders in (Redux) connected components, you must also make
+sure that the mapStateToProps function doesn’t return new objects each time it
+is called. The problem is that each time mapStateToProps runs, it returns a new
+object, even if the underlying objects didn’t change. As a consequence, the
+component re renders every time something in the state changes — while id should
+only render if the part of the state we are requiring change.<br>
 
-[Reselect](https://github.com/reactjs/reselect) solves this problem by using memoization. Instead of computing the props directly in mapStateToProps, you use a selector from reselect, which returns the same output if the input didn’t change.
+[Reselect](https://github.com/reactjs/reselect) solves this problem by using
+memoization. Instead of computing the props directly in mapStateToProps, you use
+a selector from reselect, which returns the same output if the input didn’t
+change.
 
 ### Usage
 
 Examples:
 
-- Without Reselect
+* Without Reselect
   ```js
-  function mapStateToProps (state) {
+  function mapStateToProps(state) {
     return {
-      counter: state.counter
-    }
+      counter: state.counter,
+    };
   }
   ```
-- With Reselect
+* With Reselect
+
   ```js
-  import { createStructuredSelector, createSelector } from 'reselect'
+  import { createStructuredSelector, createSelector } from 'reselect';
 
   const mapStateToProps = createStructuredSelector({
     counter: createSelector(
-      (state) => state.counter,
-      (counterState) => counterState
+      state => state.counter,
+      counterState => counterState
     ),
-  })
+  });
   ```
-For further examples see the [official documentation](https://github.com/reactjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector).
 
-### Uninstall
+  For further examples see the
+  [official documentation](https://github.com/reactjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector).
 
-```bash
-npm uninstall reselect --save
-```
-**Note**<br>
-If you uninstall reselect, generating a container with a selector feature from the command line (`npm run generate`) will throw an error.
-
+**Note**<br> If you uninstall reselect, generating a container with a selector
+feature from the command line (`npm run generate`) will throw an error.
 
 ## Recompose
 
-Because a need of `shouldComponentUpdate`, sometime you have to transform a simple, functional component to a class-based component. This adds more lines of code, and every line of code has a cost — to write, to debug, and to maintain.
-Fortunately, you can implement the `shouldComponentUpdate` logic thanks to [recompose](https://github.com/acdlite/recompose). It’s a functional utility belt for React, providing for instance the `pure()` HOC.
-Now instead  of export the component we can do `export default pure(componentName)` an this will be pure without transforming to a class-based component.
+Because a need of `shouldComponentUpdate`, sometime you have to transform a
+simple, functional component to a class-based component. This adds more lines of
+code, and every line of code has a cost — to write, to debug, and to maintain.
+Fortunately, you can implement the `shouldComponentUpdate` logic thanks to
+[recompose](https://github.com/acdlite/recompose). It’s a functional utility
+belt for React, providing for instance the `pure()` HOC. Now instead of export
+the component we can do `export default pure(componentName)` an this will be
+pure without transforming to a class-based component.
 
 ### Usage
 
 Component will only update for specific keys.
+
 ```js
 import onlyUpdateForKeys from ‘recompose/onlyUpdateForKeys’
 
@@ -423,6 +405,7 @@ export default onlyUpdateForKeys([‘ids’, ‘data’])(componentName)
 ```
 
 Be more specific and target only the props that I know may change
+
 ```js
 import shouldUpdate from ‘recompose/shouldUpdate’
 
@@ -436,6 +419,7 @@ export default shouldUpdate(checkPropsChange)(componentName)
 ```
 
 Make your component pure even if is not a class based component
+
 ```js
 import pure from ‘recompose/pure
 
@@ -445,50 +429,43 @@ const componentName = ({ resource, ids, data, children }) => (
 export default pure(componentName)
 ```
 
-### Uninstall
-
-```bash
-npm uninstall recompose --save
-```
-**Note**<br>
-If you uninstall recompose, generating a pure component from the command line (`npm run generate`) will throw an error.
-
-
 ## Redux Actions
 
-If you adopt Flux standard action (FSA) and you will, right ?, then you can also consider some libraries that are designed to work with it. [redux-actions](https://github.com/acdlite/redux-actions) is the most popular. Then just export the `createAction` function.
+If you adopt Flux standard action (FSA) and you will, right ?, then you can also
+consider some libraries that are designed to work with it.
+[redux-actions](https://github.com/acdlite/redux-actions) is the most popular.
+Then just export the `createAction` function.
 
 ### Usage
 
 ```js
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../constants/ActionTypes'
-import { createAction } from 'redux-actions'
+import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../constants/ActionTypes';
+import { createAction } from 'redux-actions';
 
-export const increment = createAction(INCREMENT_COUNTER)
+export const increment = createAction(INCREMENT_COUNTER);
 
-export const decrement = createAction(DECREMENT_COUNTER)
+export const decrement = createAction(DECREMENT_COUNTER);
 ```
+
 More examples
+
 ```js
-const inc = createAction(INCREMENT)
-inc() // { type: INCREMENT }
-inc(1)  // { type: INCREMENT, payload: 1 }
+const inc = createAction(INCREMENT);
+inc(); // { type: INCREMENT }
+inc(1); // { type: INCREMENT, payload: 1 }
 
-const addUser = createAction(ADD_USER, (name, lastName) => ({name, lastName}) )
-addUser('John', 'Doe') // { type: ADD_USER, payload: { name: 'John', lastName: 'Doe' } }
-addUser(new Error('no user')) // { type: ADD_USER, error: true, payload: /* error */ }
+const addUser = createAction(ADD_USER, (name, lastName) => ({
+  name,
+  lastName,
+}));
+addUser('John', 'Doe'); // { type: ADD_USER, payload: { name: 'John', lastName: 'Doe' } }
+addUser(new Error('no user')); // { type: ADD_USER, error: true, payload: /* error */ }
 ```
-### Uninstall
-
-```bash
-npm uninstall redux-actions --save
-```
-
 
 ## Create React App config
 
-You can find the most recent version of the create-react-app guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
-
+You can find the most recent version of the create-react-app guide
+[here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## License
 
