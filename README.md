@@ -13,8 +13,6 @@ and has been adapted to the Cognite Way&trade;
 
 ## Installation
 
-**Note: this is not actually published on npm yet. you have to use npm link.**
-
 First, install [Yeoman](http://yeoman.io) and generator-create-react-redux-app
 using [yarn](https://yarnpkg.com/)( **You’ll need to have Node >= 6.10.3 on your
 machine** [node.js](https://nodejs.org/)).
@@ -357,7 +355,7 @@ Examples:
   ```js
   function mapStateToProps(state) {
     return {
-      counter: state.counter,
+      counter: state.counter
     };
   }
   ```
@@ -370,7 +368,7 @@ Examples:
     counter: createSelector(
       state => state.counter,
       counterState => counterState
-    ),
+    )
   });
   ```
 
@@ -456,7 +454,7 @@ inc(1); // { type: INCREMENT, payload: 1 }
 
 const addUser = createAction(ADD_USER, (name, lastName) => ({
   name,
-  lastName,
+  lastName
 }));
 addUser('John', 'Doe'); // { type: ADD_USER, payload: { name: 'John', lastName: 'Doe' } }
 addUser(new Error('no user')); // { type: ADD_USER, error: true, payload: /* error */ }
