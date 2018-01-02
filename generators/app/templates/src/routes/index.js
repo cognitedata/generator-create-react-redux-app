@@ -15,7 +15,7 @@ function Routes() {
     <ConnectedRouter history={history}>
       <Container>
         <Header />
-        <Route path="/" component={CounterContainer} />
+        <Route exact path="/" component={CounterContainer} />
       </Container>
     </ConnectedRouter>
   );
