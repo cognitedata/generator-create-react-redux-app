@@ -4,17 +4,9 @@ import { createBrowserHistory } from 'history';
 import ReduxThunk from 'redux-thunk';
 import rootReducer from 'reducer';
 
-// const logger = () => next => action => {
-//   if (action.type === '@@router/LOCATION_CHANGE') {
-//     global.mixpanel.track('Location change', action.payload);
-//   }
-//   const result = next(action);
-//   return result;
-// };
-
 export const history = createBrowserHistory();
 
-const middlewares = [routerMiddleware(history), ReduxThunk /** , logger */];
+const middlewares = [routerMiddleware(history), ReduxThunk];
 
 export default function configureStore(initialState = {}) {
   return createStore(

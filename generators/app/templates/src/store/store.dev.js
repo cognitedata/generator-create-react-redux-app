@@ -2,13 +2,13 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory } from 'history';
-import { connectRouter } from 'connected-react-router';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import rootReducer from 'reducer';
 
 export const history = createBrowserHistory();
 
 export default function configureStore(initialState = {}) {
-  const middlewares = [ReduxThunk];
+  const middlewares = [routerMiddleware(history), ReduxThunk];
   const enhancers = [
     applyMiddleware(...middlewares),
     // other store enhancers if any
