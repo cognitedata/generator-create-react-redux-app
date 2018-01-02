@@ -2,17 +2,17 @@ const componentExists = require('../utils/componentExists');
 
 module.exports = {
   description:
-    'Create a module in the DUCK pattern (reducer, actions, selector constants)',
+    'Create a module in the DUCK pattern (reducer, actions, selectors, constants)',
   prompts: [
     {
       type: 'input',
       name: 'name',
       message: 'What should it be called?',
-      default: 'TodoDuck',
+      default: 'Todo',
       validate: value => {
         if (/.+/.test(value)) {
           return componentExists(value)
-            ? 'A duck with this name already exists'
+            ? 'A module with this name already exists'
             : true;
         }
 
