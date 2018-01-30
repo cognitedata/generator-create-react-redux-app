@@ -46,7 +46,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "format": "npm run prettier -- --write '{,!(build|generators)/**/}*.js'",
+    "format": "yarn run prettier -- --write '{,!(build|generators)/**/}*.js'",
     "precommit": "lint-staged",
     "eslint-check":
       "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
@@ -55,7 +55,7 @@
     "generate": "plop --plopfile generators/index.js"
   },
   "lint-staged": {
-    "{,!(build|generators)/**/}*.js": ["npm run prettier -- --write", "git add"]
+    "{,!(build|generators)/**/}*.js": ["yarn run prettier -- --write", "git add"]
   },
   "engines": {
     "npm": ">=4",
