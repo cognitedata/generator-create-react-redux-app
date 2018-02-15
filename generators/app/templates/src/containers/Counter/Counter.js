@@ -38,8 +38,8 @@ class CounterContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  counter: state.counter
+const mapStateToProps = state => ({
+  counter: state.counter,
 });
 
 function mapDispatchToProps(dispatch) {

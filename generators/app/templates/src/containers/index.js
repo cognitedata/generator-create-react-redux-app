@@ -1,3 +1,3 @@
-import { default as CounterContainer} from './Counter';
+import CounterContainer from './Counter';
 
 export { CounterContainer };

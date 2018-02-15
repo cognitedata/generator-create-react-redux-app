@@ -1,2 +1,2 @@
-export { default } from './CounterDuck.js';
-export * from './CounterDuck.js';
+export { default } from './Counter.js';
+export * from './Counter.js';
