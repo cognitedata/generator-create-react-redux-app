@@ -115,13 +115,6 @@ const projectGenerator = Generator.extend({
       );
     },
 
-    prettierrc() {
-      this.fs.copy(
-        this.templatePath('prettierrc'),
-        this.destinationPath('.prettierrc')
-      );
-    },
-
     env() {
       this.fs.copy(this.templatePath('env'), this.destinationPath('.env'));
     },
