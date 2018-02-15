@@ -79,13 +79,6 @@ module.exports = {
         templateFile: indexTemplate,
         abortOnFail: true,
       },
-      {
-        type: 'modify',
-        path: '../src/components/index.js',
-        pattern: /$(?![\r\n])/gm,
-        template: "export { default as {{properCase name}} } from './{{properCase name}}';\n",
-        abortOnFail: true,
-      },
     ];
 
     return actions;
