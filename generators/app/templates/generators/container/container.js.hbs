@@ -7,9 +7,6 @@ import { connect } from 'react-redux';
 import * as {{ actionsFile }} from 'modules/{{ actionsFile }}';
 {{/if}}
 
-{{#if addSelectors}}
-import { createStructuredSelector, createSelector } from 'reselect';
-{{/if}}
 {{#unless addRedux}}
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -26,19 +23,9 @@ class {{ properCase name }} extends React.{{{ component }}} {
 }
 
 {{#if addRedux}}
-{{#if addSelectors}}
-// Change prop to the state part you need as a prop
-const mapStateToProps = createStructuredSelector({
-  prop: createSelector(state => state.prop, propState => propState),
-});
-{{/if}}
-{{#unless addSelectors}}
-function mapStateToProps (state) {
-  return {
-
-  }
+const mapStateToProps = (state)  => ({
+  someProp: state.someState
 }
-{{/unless}}
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({{ actionsFile }}, dispatch);

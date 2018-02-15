@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createStructuredSelector, createSelector } from 'reselect';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -39,8 +38,8 @@ class CounterContainer extends React.Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  counter: createSelector(state => state.counter, counterState => counterState),
+const mapStateToProps = (state) => ({
+  counter: state.counter
 });
 
 function mapDispatchToProps(dispatch) {
