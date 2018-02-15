@@ -16,7 +16,7 @@
     "redux-thunk": "^2.2.0",
     "redux-actions": "^2.2.1",
     "styled-components": "^2.2.3",
-    "@cognite/react-scripts": "1.0.17"
+    "@cognite/react-scripts": ">=2"
   },
   "devDependencies": {
     "node-plop": "^0.5.5",
