@@ -1,55 +1,39 @@
 {
-  "name": "@cognite/generator-create-react-redux-app",
-  "version": "1.1.4",
-  "description": "Cognite fork of generator-create-redux-app",
-  "homepage": "https://github.com/cognitedata/generator-create-react-redux-app",
-  "author": {
-    "name": "halvard",
-    "email": "halvard.eggen@cognite.com"
-  },
-  "files": [
-    "generators"
-  ],
-  "main": "generators/app/index.js",
-  "keywords": [
-    "redux",
-    "react",
-    "starter",
-    "scaffolding",
-    "create-react-app",
-    "yeoman-generator"
-  ],
-  "devDependencies": {
-    "babel-eslint": "^8.0.3",
-    "eslint": "^4.12.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.4.1",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-prettier": "^2.3.1",
-    "eslint-plugin-react": "^7.5.1",
-    "mocha": "^3.4.2",
-    "np": "^2.16.0",
-    "prettier": "^1.9.0",
-    "yeoman-assert": "^3.0.0",
-    "yeoman-test": "^1.7.0"
-  },
+  "name": "test1",
+  "description": "test1",
+  "version": "0.1.0",
+  "author": "Halvard",
   "dependencies": {
-    "to-case": "^2.0.0",
-    "yeoman-generator": "^1.1.1",
-    "yosay": "^2.0.0"
+    "connected-react-router": "^4.3.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "history": "^4.7.2",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-saga": "^0.16.0",
+    "styled-components": "^3.4.2",
+    "@cognite/cognitesdk": "^0.4.6",
+    "@cognite/metrics": "^0.0.12",
+    "@cognite/react-scripts": "^2"
+  },
+  "devDependencies": {
+    "enzyme": "^3.2.0",
+    "@cognite/eslint-config": "*",
+    "enzyme-adapter-react-16": "^1.1.0"
   },
   "scripts": {
-    "test": "mocha --bail test/*.spec.js",
-    "release": "np"
+    "start": "cognite-react-scripts start",
+    "build": "cognite-react-scripts build",
+    "test": "cognite-react-scripts test --env=jsdom",
+    "eject": "cognite-react-scripts eject",
+    "precommit": "lint --fix",
+    "lint": "eslint ."
   },
-  "bugs": {
-    "url": "https://github.com/cognitedata/generator-create-react-redux-app/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cognitedata/generator-create-react-redux-app.git"
-  },
-  "license": "MIT"
+  "engines": {
+    "npm": ">=4",
+    "node": ">=6"
+  }
 }
