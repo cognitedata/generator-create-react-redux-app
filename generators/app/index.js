@@ -110,19 +110,8 @@ const projectGenerator = Generator.extend({
 
     eslintrc() {
       this.fs.copy(
-        this.templatePath('eslintrc.json'),
-        this.destinationPath('.eslintrc.json')
-      );
-    },
-
-    env() {
-      this.fs.copy(this.templatePath('env'), this.destinationPath('.env'));
-    },
-
-    generators() {
-      this.fs.copy(
-        this.templatePath('generators'),
-        this.destinationPath('generators')
+        this.templatePath('eslintrc'),
+        this.destinationPath('.eslintrc')
       );
     },
 
