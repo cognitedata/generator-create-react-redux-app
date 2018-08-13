@@ -3,11 +3,14 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import configureStore from 'store';
-import Routes from 'routes';
+import Routes from './routes';
 import 'styles/global-styles';
 import registerServiceWorker from 'utils/registerServiceWorker';
+import Metrics from '@cognite/metrics';
 
-// TODO: create a cognite theme that is re-usable
+Metrics.init({ mixpanelToken: 123 });
+
+// https://www.styled-components.com/docs/advanced#theming
 const theme = {};
 
 render(
