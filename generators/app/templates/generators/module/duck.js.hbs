@@ -18,17 +18,30 @@ export default (state = initialState, action) => {
 // Action creators
 export const verb{{constantCase name}} = createAction({{constantCase name}}_VERB);
 
-export const someSideeffectThenVerb = () => async (dispatch, getState) => {
-  const value = await sideEffect();
-
-  dispatch(verb{{constantCase name}}(value));
-};
-
 export const actions = {
   verb{{constantCase name}},
-  someSideeffectThenVerb,
 };
 
 // Selectors
-
 const get{{constantCase name}} = (state) => state.somePart;
+
+// Sagas
+
+function* getData() {
+  try {
+    yield call(Api.getData);
+    yield put({ type: '{{constantCase name}}_VERB_SUCCEEDED' });
+  } catch (e) {
+    yield put({ type: '{{constantCase name}}_VERB_FAILED', message: e.message });
+  }
+}
+
+function* mySaga() {
+  yield takeEvery({{constantCase name}}_VERB, getData);
+}
+
+function* mySaga2() {
+  yield takeEvery({{constantCase name}}_OTHE_VERB, getData);
+}
+
+export const Sagas = [mySaga, mySaga2];

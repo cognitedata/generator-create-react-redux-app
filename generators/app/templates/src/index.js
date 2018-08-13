@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import Metrics from '@cognite/metrics';
+import 'antd/dist/antd.css';
 
 import './styles/global-styles';
 import registerServiceWorker from './utils/registerServiceWorker';

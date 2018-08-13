@@ -35,16 +35,8 @@ module.exports = {
         componentTemplate = './component/es6.js.hbs';
         break;
       }
-      case 'ES6 Class (Pure)': {
-        componentTemplate = './component/es6.pure.js.hbs';
-        break;
-      }
       case 'Stateless Function': {
         componentTemplate = './component/stateless.js.hbs';
-        break;
-      }
-      case 'Stateless Function (Pure)': {
-        componentTemplate = './component/stateless.pure.js.hbs';
         break;
       }
       default: {
