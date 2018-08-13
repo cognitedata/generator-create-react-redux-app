@@ -7,7 +7,6 @@ describe('Counter', () => {
     const wrapper = mount(
       <Counter
         increment={() => {}}
-        incrementIfOdd={() => {}}
         decrement={() => {}}
         counter={0}
       />

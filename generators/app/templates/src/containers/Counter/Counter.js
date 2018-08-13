@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as CounterActions from 'modules/Counter';
-import { Counter } from 'components/Counter';
+import * as CounterActions from '../../modules/Counter';
+import { Counter } from '../../components/Counter';
 
 class CounterContainer extends React.Component {
   static propTypes = {
     incrementCounter: PropTypes.func.isRequired,
     decrementCounter: PropTypes.func.isRequired,
-    incrementCounterIfOdd: PropTypes.func.isRequired,
     counter: PropTypes.number.isRequired,
   };
 
@@ -22,17 +21,12 @@ class CounterContainer extends React.Component {
     this.props.decrementCounter();
   };
 
-  incrementIfOdd = () => {
-    this.props.incrementCounterIfOdd();
-  };
-
   render() {
     return (
       <Counter
         counter={this.props.counter}
         increment={this.increment}
         decrement={this.decrement}
-        incrementIfOdd={this.incrementIfOdd}
       />
     );
   }
@@ -46,4 +40,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(CounterActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CounterContainer);
