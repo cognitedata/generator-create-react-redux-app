@@ -4,20 +4,21 @@
   "version": "<%= projectVersion %>",
   "author": "<%= authorName %>",
   "dependencies": {
+    "@cognite/cognitesdk": "^0.4.6",
+    "@cognite/metrics": "^0.0.12",
+    "@cognite/react-scripts": "^2",
     "connected-react-router": "^4.3.0",
+    "history": "^4.7.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "history": "^4.7.2",
     "redux": "^4.0.0",
+    "redux-actions": "^2.6.1",
     "redux-devtools-extension": "^2.13.5",
     "redux-saga": "^0.16.0",
-    "styled-components": "^3.4.2",
-    "@cognite/cognitesdk": "^0.4.6",
-    "@cognite/metrics": "^0.0.12",
-    "@cognite/react-scripts": "^2"
+    "styled-components": "^3.4.2"
   },
   "devDependencies": {
     "enzyme": "^3.2.0",
