@@ -119,6 +119,20 @@ const projectGenerator = Generator.extend({
       this.fs.copy(this.templatePath('docs'), this.destinationPath('docs'));
     },
 
+    generators() {
+      this.fs.copy(
+        this.templatePath('generators'),
+        this.destinationPath('generators')
+      );
+    },
+
+    storybook() {
+      this.fs.copy(
+        this.templatePath('.storybook'),
+        this.destinationPath('.storybook')
+      );
+    },
+
     src() {
       this.fs.copy(this.templatePath('src'), this.destinationPath('src'));
     },

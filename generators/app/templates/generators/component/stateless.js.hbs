@@ -1,0 +1,21 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import Metrics from '@cognite/metrics';
+
+const metrics = Metrics.create('{{ properCase name }}');
+
+const propTypes = {};
+
+const defaultProps = {};
+
+const {{ properCase name }} = ({ t, ...props }) => {
+  return (
+    <h1>{{ properCase name }}</h1>
+  );
+};
+
+{{ properCase name }}.propTypes = propTypes;
+{{ properCase name }}.defaultProps = defaultProps;
+
+
+export default {{ properCase name }};
