@@ -44,12 +44,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-### `npm run generate`
-
-Allows you to auto-generate boilerplate code for common parts of your
-application, specifically `component`s and `container`s.
-
-
 ## User Guide
 
 - [Folder Structure](#folder-structure)
@@ -70,7 +64,6 @@ application, specifically `component`s and `container`s.
 
 ## Folder Structure
 
-create-redux-app override create-redux-app folder structure.
 Once the generator runs your project folders should look like this:
 
 ```
@@ -84,12 +77,11 @@ my-app/
     actions/
     assets/
     components/
-    constants/
     containers/
-    reducers/
+    modules/
     routes/
     store/
-    tests/
+    reducer/
     styles/
     utils/
     index.js
@@ -132,24 +124,6 @@ Create Redux App use [Redux DevTools Extension](http://extension.remotedev.io/).
 
 #### 4. For other browsers and non-browser environment
   - use [`remote-redux-devtools`](https://github.com/zalmoxisus/remote-redux-devtools).
-
-
-## Absolute Paths
-
-  By default ES6 modules in create-react-app use relative paths, which is fine for cases where the files you’re importing are relatively close within the file tree
-  so if the file is in the same folder and next to the file you're importing from, just use relative paths like so:
-
-  ```js
-  import { createGoal } from ‘./actions’
-  import { selectAuth } from ‘./selectors’
-  ```
-  But using relative paths is a real pain when you start dealing with deeply nested tree structures because you end up with dot-dot syndrome. Because of the `.env` file at the root level now we can now do absolute path like this:
-
-  ```js
-  import { editUser } from ‘containers/AppContainer/actions’
-  import { selectAuth } from ‘containers/AppContainer/selectors
-  ```
-
 
 ## Import Export Containers and Components
 
