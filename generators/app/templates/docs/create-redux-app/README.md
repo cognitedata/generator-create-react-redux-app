@@ -1,14 +1,14 @@
 # Generator create-redux-app
 
-This project was bootstrapped with [Create Redux App](https://github.com/jonidelv/generator-create-redux-app). Here you can find information on how to perform common tasks.
+This project was bootstrapped with [Cognite Create Redux App](https://github.com/cognitedata/generator-create-react-redux-app). Here you can find information on how to perform common tasks.
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-create-redux-app using [npm](https://www.npmjs.com/) ( **You’ll need to have Node >= 6.10.3 on your machine**  [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-create-redux-app using [yarn](https://www.npmjs.com/) ( **You’ll need to have Node >= 6.10.3 on your machine**  [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g yo
-npm install -g generator-create-redux-app
+yarn global add yo
+yarn global add @cognite/generator-create-redux-app
 ```
 
 Then generate your new project:
@@ -16,12 +16,12 @@ Then generate your new project:
 ```bash
 mkdir project-name
 cd project-name
-yo create-redux-app
+yo @cognite/create-redux-app
 ```
 
 Once the installation is done, you can run some commands inside the project folder:
 
-### `npm start` or `yarn start`
+### `yarn start`
 
 Runs the app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -29,14 +29,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will see the build errors and lint warnings in the console.
 
-### `npm test` or `yarn test`
+### `yarn test`
 
 Runs the test watcher in an interactive mode.<br>
 By default, runs tests related to files changes since the last commit.
 
 [Read more about testing.](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests)
 
-### `npm run build` or `yarn build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -48,16 +48,11 @@ Your app is ready to be deployed!
 
 - [Folder Structure](#folder-structure)
 - [Redux Dev Tools](#redux-dev-tools)
-- [Absolute Paths](#absolute-paths)
 - [Import Export Containers and Components](#import-export-containers-and-components)
-- [Git Hooks](#git-hooks)
-- [Prettier](#prettier)
+- [Linting](#Linting)
 - [Routing](#routing)
 - [Styled Components](#styled-components)
-- [Adding Sass Preprocessor](#adding-sass-preprocessor)
 - [Generators](#generators)
-- [Reselect](#reselect)
-- [Recompose](#recompose)
 - [Redux Actions](#redux-actions)
 - [Create React App config](#create-react-app-config)
 
@@ -74,17 +69,18 @@ my-app/
     index.html
     favicon.ico
   src/
-    actions/
     assets/
     components/
     containers/
     modules/
     routes/
+    sagas/
     store/
     reducer/
     styles/
     utils/
     index.js
+    setupTests.js
 ```
 
 For the project to build, **these files must exist with exact filenames**:
@@ -112,12 +108,12 @@ Create Redux App use [Redux DevTools Extension](http://extension.remotedev.io/).
 
 #### 1. For Chrome
  - from [Chrome Web Store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd);
- - or build it with `npm i && npm run build:extension` and [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked) `./build/extension`;
- - or run it in dev mode with `npm i && npm start` and [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked) `./dev`.
+ - or build it with `yarn i && yarn run build:extension` and [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked) `./build/extension`;
+ - or run it in dev mode with `yarn i && yarn start` and [load the extension's folder](https://developer.chrome.com/extensions/getstarted#unpacked) `./dev`.
 
 #### 2. For Firefox
  - from [Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/remotedev/);
- - or build it with `npm i && npm run build:firefox` and [load the extension's folder](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Temporary_Installation_in_Firefox) `./build/firefox` (just select a file from inside the dir).
+ - or build it with `yarn i && yarn run build:firefox` and [load the extension's folder](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Temporary_Installation_in_Firefox) `./build/firefox` (just select a file from inside the dir).
 
 #### 3. For Electron
   - just specify `REDUX_DEVTOOLS` in [`electron-devtools-installer`](https://github.com/GPMDP/electron-devtools-installer).
@@ -147,56 +143,10 @@ To import Components or Containers doit like follow:
     import { Comp1 } from '../components'
     import { Cont1 } from '../containers'
     ```
+## Linting
 
-## Git Hooks
-
-We use [Husky](https://github.com/typicode/husky) to create Git Hooks. There is a pre commit hook than run prettier to ensure good code format. You can also create a prepush hook.<br>
-```
-// Edit package.json
-
-{
-  "scripts": {
-    "precommit": "lint-staged",
-    "prepush": "whatever...",
-    "...": "..."
-  },
-  "lint-staged": {
-    "{,!(build)/**/}*.js": [
-      "npm run prettier -- --write",
-      "git add"
-    ]
-  }
-}
-```
-
-### Uninstall
-
-```bash
-npm uninstall husky --save-dev
-```
-And delete the `pre` scripts in`package.json`
-
-
-## Prettier
-
-You can add/remove rules if you want `prettier [opts] [filename ...]`. Prettier runs in a precommit hooks to ensure good code formating.
-```
-// Edit package.json
-
-"scripts": {
-  "prettier": "prettier --single-quote --trailing-comma es5 --no-semi",
-  "format": "npm run prettier -- --write '{,!(build|generators)/**/}*.js'",
-  "precommit": "lint-staged",
-  "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
-},
-"lint-staged": {
-  "{,!(build|generators)/**/}*.js": [
-    "npm run prettier -- --write",
-    "git add"
-  ]
-}
-```
-
+We use `@cognite/eslint-config"` that sets up eslint with prettier as a formatter.
+Set your editor to run `eslint --fix` on save to get the full benefit.
 
 ## Routing
 
@@ -253,150 +203,16 @@ For further examples see the
 [official documentation](https://github.com/styled-components/styled-components).
 
 
-## Adding Sass Preprocessor
-
-Can I use Sass with this boilerplate? yes, although we advise against it and **do not support this**. We selected
-[`styled-components`](https://github.com/styled-components/styled-components)
-over Sass because its approach is more powerful: instead of trying to
-give a styling language programmatic abilities, it pulls logic and configuration
-out into JS where we believe those features belong.
-
-If you _really_ still want (or need) to use Sass [then...](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc)
-
-
 ## Generators
 
 ```Shell
-npm run generate
+yarn generate
 ```
 
 Allows you to auto-generate boilerplate code for common parts of your
-application, specifically `component`s and `container`s. You can
-also run `npm run generate <part>` to skip the first selection. (e.g. `npm run
+application, specifically `component`s, `module`s and `container`s. You can
+also run `yarn run generate <part>` to skip the first selection. (e.g. `yarn
 generate container`). This generators are outside yeoman so you can change them to fit your necessities, for this just go to `generators/index.js`, see [plop documentation](https://plopjs.com/documentation/) for more information.
-
-
-## Reselect
-
-To prevent useless renders in (Redux) connected components, you must also make sure that the mapStateToProps function doesn’t return new objects each time it is called.
-The problem is that each time mapStateToProps runs, it returns a new object, even if the underlying objects didn’t change. As a consequence, the component re renders every time something in the state changes — while id should only render if the part of the state we are requiring change.<br>
-
-[Reselect](https://github.com/reactjs/reselect) solves this problem by using memoization. Instead of computing the props directly in mapStateToProps, you use a selector from reselect, which returns the same output if the input didn’t change.
-
-### Usage
-
-Examples:
-
-- Without Reselect
-  ```js
-  function mapStateToProps (state) {
-    return {
-      counter: state.counter
-    }
-  }
-  ```
-- With Reselect
-  ```js
-  import { createStructuredSelector, createSelector } from 'reselect'
-
-  const mapStateToProps = createStructuredSelector({
-    counter: createSelector(
-      (state) => state.counter,
-      (counterState) => counterState
-    ),
-  })
-  ```
-For further examples see the [official documentation](https://github.com/reactjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector).
-
-### Uninstall
-
-```bash
-npm uninstall reselect --save
-```
-**Note**<br>
-If you uninstall reselect, generating a container with a selector feature from the command line (`npm run generate`) will throw an error.
-
-
-## Recompose
-
-Because a need of `shouldComponentUpdate`, sometime you have to transform a simple, functional component to a class-based component. This adds more lines of code, and every line of code has a cost — to write, to debug, and to maintain.
-Fortunately, you can implement the `shouldComponentUpdate` logic thanks to [recompose](https://github.com/acdlite/recompose). It’s a functional utility belt for React, providing for instance the `pure()` HOC.
-Now instead  of export the component we can do `export default pure(componentName)` an this will be pure without transforming to a class-based component.
-
-### Usage
-
-Component will only update for specific keys.
-```js
-import onlyUpdateForKeys from ‘recompose/onlyUpdateForKeys’
-
-const componentName = ({ resource, ids, data, children }) => (
-    ...
-);
-export default onlyUpdateForKeys([‘ids’, ‘data’])(componentName)
-```
-
-Be more specific and target only the props that I know may change
-```js
-import shouldUpdate from ‘recompose/shouldUpdate’
-
-const componentName = ({ resource, ids, data, children }) => (
-    ...
-);
-const checkPropsChange = (props, nextProps) =>
- (nextProps.ids !== props.ids ||
-  nextProps.data !== props.data);
-export default shouldUpdate(checkPropsChange)(componentName)
-```
-
-Make your component pure even if is not a class based component
-```js
-import pure from ‘recompose/pure
-
-const componentName = ({ resource, ids, data, children }) => (
-    ...
-);
-export default pure(componentName)
-```
-
-### Uninstall
-
-```bash
-npm uninstall recompose --save
-```
-**Note**<br>
-If you uninstall recompose, generating a pure component from the command line (`npm run generate`) will throw an error.
-
-
-## Redux Actions
-
-If you adopt Flux standard action (FSA) and you will, right ?, then you can also consider some libraries that are designed to work with it. [redux-actions](https://github.com/acdlite/redux-actions) is the most popular. Then just export the `createAction` function.
-
-### Usage
-
-```js
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../constants/ActionTypes'
-import { createAction } from 'redux-actions'
-
-export const increment = createAction(INCREMENT_COUNTER)
-
-export const decrement = createAction(DECREMENT_COUNTER)
-```
-More examples
-```js
-const inc = createAction(INCREMENT)
-inc() // { type: INCREMENT }
-inc(1)  // { type: INCREMENT, payload: 1 }
-
-const addUser = createAction(ADD_USER, (name, lastName) => ({name, lastName}) )
-addUser('John', 'Doe') // { type: ADD_USER, payload: { name: 'John', lastName: 'Doe' } }
-addUser(new Error('no user')) // { type: ADD_USER, error: true, payload: /* error */ }
-```
-### Uninstall
-
-```bash
-npm uninstall redux-actions --save
-```
-
 
 ## Create React App config
 
