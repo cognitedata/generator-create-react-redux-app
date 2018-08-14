@@ -87,6 +87,10 @@ const projectGenerator = Generator.extend({
       );
     },
 
+    env() {
+      this.fs.copy(this.templatePath('env'), this.destinationPath('.env'));
+    },
+
     gitattributes() {
       this.fs.copy(
         this.templatePath('gitattributes'),
