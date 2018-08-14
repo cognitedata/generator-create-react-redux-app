@@ -49,6 +49,7 @@ Your app is ready to be deployed!
 - [Folder Structure](#folder-structure)
 - [Redux Dev Tools](#redux-dev-tools)
 - [Absolute Paths](#absolute-paths)
+- [Git Hooks](#git-hooks)
 - [Import Export Containers and Components](#import-export-containers-and-components)
 - [Linting](#Linting)
 - [Routing](#routing)
@@ -161,6 +162,30 @@ To import Components or Containers doit like follow:
 
 We use `@cognite/eslint-config"` that sets up eslint with prettier as a formatter.
 Set your editor to run `eslint --fix` on save to get the full benefit.
+
+## Git Hooks
+ We use [Husky](https://github.com/typicode/husky) to create Git Hooks. There is a pre commit hook than run prettier to ensure good code format. You can also create a prepush hook.<br>
+```
+// Edit package.json
+ {
+  "scripts": {
+    "precommit": "lint-staged",
+    "prepush": "whatever...",
+    "...": "..."
+  },
+  "lint-staged": {
+    "{,!(build)/**/}*.js": [
+      "npm run prettier -- --write",
+      "git add"
+    ]
+  }
+}
+```
+ ### Uninstall
+ ```bash
+npm uninstall husky --save-dev
+```
+And delete the `pre` scripts in`package.json`
 
 ## Routing
 

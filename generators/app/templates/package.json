@@ -31,6 +31,7 @@
     "babel-polyfill": "^6.26.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
+    "husky": "^0.14.3",
     "node-plop": "^0.16.0",
     "plop": "^2.1.0"
   },
@@ -40,10 +41,11 @@
     "generate": "plop --plopfile generators/index.js",
     "component": "yarn generate Component",
     "storybook": "start-storybook -p 6006",
+    "prepush": "lint",
     "build-storybook": "build-storybook",
     "test": "cognite-react-scripts test --env=jsdom",
     "eject": "cognite-react-scripts eject",
-    "precommit": "lint --fix",
+    "precommit": "lint",
     "lint": "eslint ."
   },
   "engines": {
