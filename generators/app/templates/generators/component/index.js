@@ -7,8 +7,8 @@ module.exports = {
       type: 'list',
       name: 'type',
       message: 'Select the type of component',
-      default: 'ES6 Class',
-      choices: () => ['Stateless Function', 'ES6 Class'],
+      default: 'Class',
+      choices: () => ['Stateless Function', 'Class', 'Pure Class'],
     },
     {
       type: 'input',
@@ -30,9 +30,12 @@ module.exports = {
     let componentTemplate;
 
     switch (data.type) {
-      case 'ES6':
-      case 'ES6 Class': {
+      case 'Class': {
         componentTemplate = './component/es6.js.hbs';
+        break;
+      }
+      case 'Pure Class': {
+        componentTemplate = './component/es6.pure.js.hbs';
         break;
       }
       case 'Stateless Function': {
