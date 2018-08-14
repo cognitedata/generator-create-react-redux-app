@@ -3,9 +3,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import rootReducer from '../reducer';
+import rootReducer from 'reducer';
 
-import Sagas from '../sagas';
+import Sagas from 'sagas';
 
 export const history = createBrowserHistory();
 

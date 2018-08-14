@@ -1,4 +1,4 @@
-const containerExists = require('../utils/containerExists');
+const containerExists = require('utils/containerExists');
 
 module.exports = {
   description: 'Add a container component',
@@ -29,15 +29,15 @@ module.exports = {
     const actions = [
       {
         type: 'add',
-        path: '../src/containers/{{properCase name}}/{{properCase name}}.js',
-        templateFile: './container/container.js.hbs',
+        path: 'src/containers/{{properCase name}}/{{properCase name}}.js',
+        templateFile: 'container/container.js.hbs',
         abortOnFail: true,
       },
       {
         type: 'add',
         path:
-          '../src/containers/{{properCase name}}/{{properCase name}}.spec.js',
-        templateFile: './container/spec.js.hbs',
+          'src/containers/{{properCase name}}/{{properCase name}}.spec.js',
+        templateFile: 'container/spec.js.hbs',
         abortOnFail: true,
       },
     ];
