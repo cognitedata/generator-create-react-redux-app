@@ -1,14 +1,18 @@
 import { createStore, applyMiddleware } from 'redux';
-import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory } from 'history';
+import createSagaMiddleware from 'redux-saga';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import rootReducer from 'reducer';
 
+import Sagas from 'sagas';
+
 export const history = createBrowserHistory();
 
+const sagaMiddleware = createSagaMiddleware();
+
 export default function configureStore(initialState = {}) {
-  const middlewares = [routerMiddleware(history), ReduxThunk];
+  const middlewares = [routerMiddleware(history), sagaMiddleware];
   const enhancers = [
     applyMiddleware(...middlewares),
     // other store enhancers if any
@@ -30,6 +34,8 @@ export default function configureStore(initialState = {}) {
       store.replaceReducer(nextReducer);
     });
   }
+
+  sagaMiddleware.run(Sagas);
 
   return store;
 }

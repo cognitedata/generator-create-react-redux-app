@@ -87,6 +87,10 @@ const projectGenerator = Generator.extend({
       );
     },
 
+    env() {
+      this.fs.copy(this.templatePath('env'), this.destinationPath('.env'));
+    },
+
     gitattributes() {
       this.fs.copy(
         this.templatePath('gitattributes'),
@@ -110,13 +114,13 @@ const projectGenerator = Generator.extend({
 
     eslintrc() {
       this.fs.copy(
-        this.templatePath('eslintrc.json'),
-        this.destinationPath('.eslintrc.json')
+        this.templatePath('eslintrc'),
+        this.destinationPath('.eslintrc')
       );
     },
 
-    env() {
-      this.fs.copy(this.templatePath('env'), this.destinationPath('.env'));
+    docs() {
+      this.fs.copy(this.templatePath('docs'), this.destinationPath('docs'));
     },
 
     generators() {
@@ -126,8 +130,11 @@ const projectGenerator = Generator.extend({
       );
     },
 
-    docs() {
-      this.fs.copy(this.templatePath('docs'), this.destinationPath('docs'));
+    storybook() {
+      this.fs.copy(
+        this.templatePath('.storybook'),
+        this.destinationPath('.storybook')
+      );
     },
 
     src() {

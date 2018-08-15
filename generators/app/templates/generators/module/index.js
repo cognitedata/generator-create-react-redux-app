@@ -2,7 +2,7 @@ const componentExists = require('../utils/componentExists');
 
 module.exports = {
   description:
-    'Create a module in the DUCK pattern (reducer, actions, selectors, constants)',
+    'Create a module in the DUCK pattern (reducer, actions, selectors, constants, saga)',
   prompts: [
     {
       type: 'input',
@@ -12,7 +12,7 @@ module.exports = {
       validate: value => {
         if (/.+/.test(value)) {
           return componentExists(value)
-            ? 'A module with this name already exists'
+            ? 'A duck with this name already exists'
             : true;
         }
 
@@ -28,19 +28,19 @@ module.exports = {
     const actions = [
       {
         type: 'add',
-        path: '../src/modules/{{properCase name}}/{{properCase name}}.js',
+        path: '../src/modules/{{camelCase name}}/{{properCase name}}.js',
         templateFile: componentTemplate,
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: '../src/modules/{{properCase name}}/{{properCase name}}.spec.js',
+        path: '../src/modules/{{camelCase name}}/{{properCase name}}.spec.js',
         templateFile: testTemplate,
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: '../src/modules/{{properCase name}}/index.js',
+        path: '../src/modules/{{camelCase name}}/index.js',
         templateFile: indexTemplate,
         abortOnFail: true,
       },
