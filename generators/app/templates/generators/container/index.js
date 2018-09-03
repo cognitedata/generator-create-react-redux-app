@@ -1,4 +1,4 @@
-const containerExists = require('utils/containerExists');
+const containerExists = require('../utils/containerExists');
 
 module.exports = {
   description: 'Add a container component',
@@ -35,8 +35,7 @@ module.exports = {
       },
       {
         type: 'add',
-        path:
-          'src/containers/{{properCase name}}/{{properCase name}}.spec.js',
+        path: 'src/containers/{{properCase name}}/{{properCase name}}.spec.js',
         templateFile: 'container/spec.js.hbs',
         abortOnFail: true,
       },
