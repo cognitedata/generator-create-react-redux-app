@@ -6,8 +6,11 @@ import { connect } from 'react-redux';
 
 import * as {{ actionsFile }} from 'modules/{{ actionsFile }}';
 
-export class {{ properCase name }} extends React.{{{ component }}} {
-  static propTypes = {};
+const propTypes = {};
+const defaultProps = {};
+
+export class {{ properCase name }} extends React.Component {
+  
 
   render() {
     return (
@@ -25,6 +28,9 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({{ actionsFile }}, dispatch);
 }
+
+{{ properCase name }}.propTypes = propTypes;
+{{ properCase name }}.defaultProps = defaultProps;
 
 export default connect(
   mapStateToProps,
