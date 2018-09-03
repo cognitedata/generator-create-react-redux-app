@@ -45,7 +45,7 @@
     "build-storybook": "build-storybook",
     "test": "cognite-react-scripts test --env=jsdom",
     "eject": "cognite-react-scripts eject",
-    "precommit": "lint",
+    "precommit": "git diff --cached --name-only | grep '.js$' | xargs eslint",
     "lint": "eslint ."
   },
   "engines": {
